@@ -5,16 +5,14 @@ import RecipeDetail from './pages/RecipeDetail';
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-       
-      </div>
-     
-    </>
-  )
+    <Router>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/recipe/:id' element={<RecipeDetail/>}/>
+        </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
