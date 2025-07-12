@@ -1,5 +1,5 @@
 import React from 'react';
-import RecipeCard from '../components/RecipeCard';
+import RecipeList from '../components/RecipeList';
 
 const sampleRecipes = [
     {id:1, title: 'Lentil Curry', time: '45 mins'},
@@ -11,11 +11,8 @@ export default function Home(){
     return(
     <div>
         <h1>Healthy recipes</h1>
-        <div className='recipe-list'>
-            {sampleRecipes.map((recipe)=>(
-                <RecipeCard key={recipe.id} recipe={recipe}/>
-            ))}
-        </div>
+       <RecipeList recipes={sampleRecipes} />
+       
     </div>
     );
 }
