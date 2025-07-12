@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react'; not necessary anymore
 import RecipeList from '../components/RecipeList';
 
 const sampleRecipes = [
@@ -10,9 +10,10 @@ const sampleRecipes = [
 export default function Home(){
     return(
     <div>
+         <div className="home-grid">
         <h1>Healthy recipes</h1>
        <RecipeList recipes={sampleRecipes} />
-       
+       </div>
     </div>
     );
 }

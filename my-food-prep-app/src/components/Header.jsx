@@ -5,12 +5,13 @@ function Header(){
     return(
         <header>
             <nav>
-                <ul>
+                <h1 className="logo">FoodPrepMe</h1>
+                <ul className='nav-list'>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        <Link to="/GroceryList">Grocery List</Link>
+                        <Link to="/grocery">Grocery List</Link>
                     </li>
                 </ul>
             </nav>
