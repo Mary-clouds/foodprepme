@@ -1,43 +1,37 @@
 //single recipe view
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-
-const recipes = {
-  1: {
-    title: 'Lentil Curry',
-    ingredients: ['Lentils', 'Coconut Milk', 'Spices'],
-    steps: ['Cook Lentils', 'Add Coconut Milk', 'Simmer with Spices']
-  },
-  2: {
-    title: 'Tofu Stir-fry',
-    ingredients: ['Tofu', 'Broccoli', 'Soy Sauce'],
-    steps: ['Chop Tofu', 'Stir-fry with Broccoli', 'Add Soy Sauce']
-  },
-  3: {
-    title: 'Fufu Gombo Stew',
-    ingredients: ['Fufu', 'Okra', 'Meat'],
-    steps: ['Prepare Fufu', 'Cook Okra', 'Simmer Meat']
-  }
-};
+import { useParams } from 'react-router-dom';
+import { useGrocery } from '../GroceryContext';
 
 export default function RecipeDetail() {
   const { id } = useParams();
-  const recipe = recipes[id];
+  const { addItems } = useGrocery();
 
-  if (!recipe) return <p>Recipe not found.</p>;
+  const recipes = {
+    1: { title: 'Lentil curry', ingredients: ['Lentils', 'Coconut Milk', 'Spices'], steps: ['Cook Lentils', 'Add Coconut Milk', 'Simmer with Spices'] },
+    2: { title: 'Tofu Stir-fry', ingredients: ['Tofu', 'Broccoli', 'Soy Sauce'], steps: ['Fry tofu', 'Add vegetables', 'Stir with sauce'] },
+    3: { title: 'Fufu Gombo Stew', ingredients: ['Fufu', 'Okra', 'Meat'], steps: ['Boil meat', 'Add okra', 'Serve with fufu'] },
+  };
+
+  const recipe = recipes[id];
 
   return (
     <div className="recipe-detail">
       <h1>{recipe.title}</h1>
       <h2>Ingredients:</h2>
       <ul>
-        {recipe.ingredients.map((item, i) => <li key={i}>{item}</li>)}
+        {recipe.ingredients.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
       </ul>
-      <h2>Steps:</h2>
       <ol>
-        {recipe.steps.map((step, i) => <li key={i}>{step}</li>)}
+        {recipe.steps.map((step, index) => (
+          <li key={index}>{step}</li>
+        ))}
       </ol>
-      <Link to={`/grocery/${id}`}>View Grocery List</Link>
+      <button onClick={() => addItems(recipe.ingredients)}>
+        Add to Grocery List
+      </button>
     </div>
   );
 }
