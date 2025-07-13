@@ -13,7 +13,7 @@ export default function GroceryList() {
         {groceryList.map(({ name, bought }) => (
           <li key={name} className={bought ? 'bought' : ''}>
             <span role="img" aria-label="shopping bag">🛒</span> {name}
-            <button style={{ marginLeft: '10px' }} onClick={() => toggleBought(name)}>
+            <button style={{ marginLeft: '10px', padding: '5px' }} onClick={() => toggleBought(name)}>
               {bought ? 'Undo' : 'Bought'}
             </button>
           </li>
