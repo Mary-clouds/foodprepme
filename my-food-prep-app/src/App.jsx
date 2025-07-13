@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/recipe/:id' element={<RecipeDetail/>}/>
-          <Route path="/grocery/:id" element={<GroceryList />} />
+          <Route path="/grocery" element={<GroceryList />} />
         </Routes>
         </main>
          <footer style={{ textAlign: 'center', padding: '1rem', color: '#888' }}>

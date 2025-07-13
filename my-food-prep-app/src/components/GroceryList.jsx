@@ -1,6 +1,6 @@
 //to display the grocery list
 import React from 'react';
-import { useGrocery } from '../GroceryContext';
+import { useGrocery } from './GroceryContext';
 
 export default function GroceryList() {
   const { groceryItems, toggleBought } = useGrocery();
