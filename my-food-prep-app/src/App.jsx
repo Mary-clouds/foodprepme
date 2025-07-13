@@ -20,6 +20,9 @@ function App() {
           <Route path="/grocery/:id" element={<GroceryList />} />
         </Routes>
         </main>
+         <footer style={{ textAlign: 'center', padding: '1rem', color: '#888' }}>
+          © 2025 Nevermann
+        </footer>
         </div>
     </Router>
   );
