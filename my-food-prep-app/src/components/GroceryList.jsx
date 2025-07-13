@@ -1,19 +1,19 @@
 //to display the grocery list
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGrocery } from './GroceryContext';
 
 export default function GroceryList() {
-  const { groceryItems, toggleBought } = useGrocery();
+  const { groceryList, toggleBought } = useGrocery();// get grocery list from context
 
   return (
     <div className="grocery-list">
-      <h1>Your Grocery List</h1>
+      <h1>Grocery List</h1>
+      {groceryList.length === 0 && <p>Your grocery list is empty.</p>}
       <ul>
-        {groceryItems.length === 0 && <p>No items yet.</p>}
-        {groceryItems.map(({ name, bought }, index) => (
-          <li key={index} className={`grocery-item ${bought ? 'bought' : ''}`}>
+        {groceryList.map(({ name, bought }) => (
+          <li key={name} className={bought ? 'bought' : ''}>
             <span role="img" aria-label="shopping bag">🛒</span> {name}
-            <button onClick={() => toggleBought(index)}>
+            <button style={{ marginLeft: '10px' }} onClick={() => toggleBought(name)}>
               {bought ? 'Undo' : 'Bought'}
             </button>
           </li>

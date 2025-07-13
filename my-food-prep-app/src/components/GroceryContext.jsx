@@ -23,16 +23,17 @@ export function GroceryProvider({ children }) {
     });
   };
 
-  const toggleBought = (index) => {
-    setGroceryItems(prev => {
-      const updated = [...prev];
-      updated[index].bought = !updated[index].bought;
-      return updated;
-    });
+  //accept item name
+   const toggleBought = (name) => {
+    setGroceryItems(prev => 
+      prev.map(item => 
+        item.name === name ? { ...item, bought: !item.bought } : item
+      )
+    );
   };
 
   return (
-    <GroceryContext.Provider value={{ groceryItems, addItems, toggleBought }}>
+    <GroceryContext.Provider value={{ groceryList: groceryItems, addItems, toggleBought }}>
       {children}
     </GroceryContext.Provider>
   );
