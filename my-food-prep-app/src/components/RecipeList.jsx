@@ -1,7 +1,9 @@
 //list of all recipes
 
-//import React from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import RecipeCard from './RecipeCard';
+
  export default function RecipeList({recipes}){
     return(
         <div className='recipe-list'>
