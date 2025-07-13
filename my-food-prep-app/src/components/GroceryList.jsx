@@ -5,23 +5,18 @@ import { useParams } from 'react-router-dom';
 export default function GroceryList() {
   const { id } = useParams();
 
-  const lentilCurry = ['Lentils', 'Coconut Milk', 'Spices'];
-  const tofuStirFry = ['Tofu', 'Broccoli', 'Soy Sauce'];
-  const fufuGomboStew = ['Fufu', 'Okra', 'Meat'];
+   const recipes = {
+    1: ['Lentils', 'Coconut Milk', 'Spices'],
+    2: ['Tofu', 'Broccoli', 'Soy Sauce'],
+    3: ['Fufu', 'Okra', 'Meat']
+  };
 
-  let groceryItems = [];
+  const [items, setItems] = useState([]);
 
-  if (id === '1') {
-    groceryItems = lentilCurry;
-  } else if (id === '2') {
-    groceryItems = tofuStirFry;
-  } else if (id === '3') {
-    groceryItems = fufuGomboStew;
-  }
-
-  const [items, setItems] = useState(
-    groceryItems.map((item) => ({ name: item, bought: false }))
-  );
+  useEffect(() => {
+    const groceryItems = recipes[id] || [];
+    setItems(groceryItems.map((item) => ({ name: item, bought: false })));
+  }, [id]);
 
   const toggleBought = (index) => {
     const newItems = [...items];
